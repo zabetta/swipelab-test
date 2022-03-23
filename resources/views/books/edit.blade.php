@@ -1,4 +1,4 @@
-@extends('books.layout')
+@extends('layout')
 
 @section('content')
     <div class="row" style="margin-bottom: 20px;">
@@ -45,6 +45,13 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>image url:</strong>
+                    <input type="text" disabled class="form-control"  name="ean" value="{{ $book->image_url }}" />
+                    <em>image url is auto generated from the system</em>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Author:</strong>
                     <input type="text" class="form-control"  name="author" value="{{ $book->author }}" />
                 </div>
@@ -53,6 +60,5 @@
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>
-
     </form>
 @endsection

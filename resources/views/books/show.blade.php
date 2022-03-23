@@ -1,39 +1,30 @@
-@extends('books.layout')
+@extends('layout')
 
 @section('content')
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h3>Show book</h3>
+                <h3>BOOK DETAILS</h3>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Title:</strong>
-                {{ $book->title }}
-            </div>
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-4 margin-tb">
+            <img src="{{$book->image_url}}" alt="book image" style="width:100%;border-radius: 25px;"> 
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Price:</strong>
-                {{ $book->price }}
+        <div class="col-md-8 margin-tb">
+            <div style="margin-bottom:2em;">
+                <p style="height:1.5em; width:auto"><strong>{{$book->title}}</strong></p>
+                <p style="height:1.5em; width:auto"><strong>{{$book->price}}&euro;</strong></p>
+                <br/>
+                @if (count($book->borrowedFrom) == 0)
+                    <strong style="color:green">available for loan</strong>
+                @else
+                    <strong style="color:red">NOT available for loan</strong>
+                @endif
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Ean:</strong>
-                {{ $book->ean }}
-            </div>
-        </div>
-        <img src="{{ $book->image_url }}" alt="book image url">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Author:</strong>
-                {{ $book->author }}
-            </div>
-        </div>
+        </div>    
     </div>
+    <a class="btn btn-primary" href="/books">Back to books list</a>
 @endsection

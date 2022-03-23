@@ -15,8 +15,9 @@ class BookController extends Controller
         ]);
     }
 
+        
     /**
-     * Show the form to create a new books.
+     * Show form to create new book
      *
      * @return \Illuminate\View\View
      */
@@ -45,25 +46,25 @@ class BookController extends Controller
             'ean' => $request->input('ean'),
             'image_url' => 'https://via.placeholder.com/640x480.png/',
             'price' => $request->input('price')
-    ]);
-    
-    //Check if book was created
-    if ( ! $newBook)
-    {
-        abort(500, 'Some Error');
+        ]);
+
+        //Check if book was created
+        if (!$newBook) {
+            abort(500, 'Some Error');
+        }
     }
-}
 
     /**
-    * Display the specified resource.
-    */
+     * Display the specified resource.
+     */
     public function show($id)
     {
+
         return view('books.show', [
             'book' => Book::findOrFail($id)
         ]);
     }
-        
+
 
     /**
      * Show the form for editing the specified resource.
@@ -73,8 +74,8 @@ class BookController extends Controller
         return view('books.edit', [
             'book' => Book::findOrFail($id)
         ]);
-    }   
-    
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -89,20 +90,17 @@ class BookController extends Controller
         $book->update($request->all());
 
         return redirect()->route('books.index')
-            ->with('success','Book updated successfully');
-
-    }   
+            ->with('success', 'Book updated successfully');
+    }
 
     /**
      * Remove the specified resource from storage.
-    */
+     */
     public function destroy(Book $book)
     {
         $book->delete();
 
         return redirect()->route('books.index')
-            ->with('success','Book deleted successfully');
+            ->with('success', 'Book deleted successfully');
     }
-
-    
 }

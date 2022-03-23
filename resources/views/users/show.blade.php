@@ -1,4 +1,4 @@
-@extends('users.layout')
+@extends('layout')
 
 @section('content')
     <div class="row" style="margin-bottom: 20px;">

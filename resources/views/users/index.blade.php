@@ -1,10 +1,10 @@
-@extends('users.layout')
+@extends('layout')
 
 @section('content')
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h3>Products</h3>
+                <h3>Users</h3>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('users.create') }}">Add user</a>

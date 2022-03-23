@@ -23,4 +23,6 @@ Route::get('/', function () {
 Route::resource('books', BookController::class);
 
 Route::resource('users', UserController::class);
+Route::get('users/{userId}/end-load/{bookId}', [UserController::class, 'end_loan'])->name('users.end_load');
+Route::post('users/get-load', [UserController::class, 'new_loan'])->name('users.new_load');
 

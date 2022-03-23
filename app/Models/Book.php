@@ -17,5 +17,8 @@ class Book extends Model
         'author'
     ];
 
-    
+    public function borrowedFrom(){
+        return $this->belongsToMany(User::class, 'books_users');
+    }
+        
 }
