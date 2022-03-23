@@ -11,7 +11,7 @@ use App\Models\Book;
 use App\Models\Books_Users;
 
 class UserController extends Controller
-{    
+{
     /**
      * Show the table with list of users
      *
@@ -79,7 +79,7 @@ class UserController extends Controller
             'user' => User::findOrFail($id)
         ]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -89,11 +89,10 @@ class UserController extends Controller
     public function edit($id)
     {
 
-        $books = DB::table("books")->select('*')->whereNotIn('id',function($query) {
+        $books = DB::table("books")->select('*')->whereNotIn('id', function ($query) {
 
             $query->select('book_id')->from('books_users');
-         
-         })->get();
+        })->get();
 
         return view('users.edit', [
             'user' => User::findOrFail($id),
@@ -131,30 +130,30 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
     }
-    
+
     /**
      * end loan.
      */
-    public function end_loan($userId,$bookId)
+    public function end_loan($userId, $bookId)
     {
-        $loan = Books_Users::where('user_id',$userId)->where('book_id',$bookId)->delete();
+        $loan = Books_Users::where('user_id', $userId)->where('book_id', $bookId)->delete();
 
-        return redirect()->route('users.edit',$userId)
+        return redirect()->route('users.edit', $userId)
             ->with('success', 'User has ended the loan successfully');
     }
-    
+
     /**
      * end loan.
      */
     public function new_loan(Request $request)
     {
-        
+
         $loan =  new Books_Users();
         $loan->user_id = $request->input('user_id');
         $loan->book_id = $request->input('book_id');
         $loan->save();
 
-        return redirect()->route('users.edit',$request->user_id)
+        return redirect()->route('users.edit', $request->user_id)
             ->with('success', 'User has started the loan successfully');
     }
 }

@@ -40,7 +40,7 @@ class User extends Authenticatable
     protected $casts = [];
 
     public function hasBooks()
-    {     
+    {
         return $this->belongsToMany(Book::class, 'books_users');
     }
 }

@@ -15,5 +15,4 @@ class Books_Users extends Model
         'user_id',
         'book_id'
     ];
-        
 }

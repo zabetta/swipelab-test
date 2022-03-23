@@ -22,10 +22,10 @@
 @endif
 
 @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
 
 <form action="{{ route('users.update',$user->id) }}" method="POST">
     @csrf
@@ -69,18 +69,18 @@
 </form>
 <h3>BORROWED BOOKS</h3>
 @if (count($user->hasBooks()->get()) > 0)
-    @foreach($user->hasBooks()->get() as $book )
-        <div class="row">
-            <div class="col-md 4">
-                <strong>{{$book->title}}</strong>
-            </div>
-            <div class="col-md 8">
-                <a href="/users/{{$user->id}}/end-load/{{$book->id}}">end loan</a>
-            </div>
-        </div>
-    @endforeach
+@foreach($user->hasBooks()->get() as $book )
+<div class="row">
+    <div class="col-md 4">
+        <strong>{{$book->title}}</strong>
+    </div>
+    <div class="col-md 8">
+        <a href="/users/{{$user->id}}/end-load/{{$book->id}}">end loan</a>
+    </div>
+</div>
+@endforeach
 @else
-    <em>No books</em>
+<em>No books</em>
 @endif
 
 <h4>NEW LOAN</h4>
@@ -88,7 +88,7 @@
     @csrf
     <select id="loan" name="book_id">
         @foreach($books as $book)
-            <option value="{{$book->id}}">{{$book->title}}</option>
+        <option value="{{$book->id}}">{{$book->title}}</option>
         @endforeach
     </select>
     <input type="hidden" name="user_id" value="{{$user->id}}">

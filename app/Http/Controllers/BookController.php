@@ -15,7 +15,7 @@ class BookController extends Controller
         ]);
     }
 
-        
+
     /**
      * Show form to create new book
      *
