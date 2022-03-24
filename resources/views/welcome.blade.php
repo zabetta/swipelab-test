@@ -11,13 +11,18 @@
 
 <div class="row" style="margin-bottom: 20px;">
     <div class="col-md-6 margin-tb">
+        <p>backend</p>
         <div class="pull-left">
-            <a href="/users">show-users</a>
+            <ul>
+                <li><a href="/books">Books</a></li>
+                <li><a href="/users">Users</a></li>
+            </ul>
         </div>
     </div>
     <div class="col-md-6 margin-tb">
+        <p>frontend</p>
         <div class="pull-right">
-            <a href="/books">show-books</a>
+            <a href="{{route('books.showlist')}}">Books</a>
         </div>
     </div>
 </div>

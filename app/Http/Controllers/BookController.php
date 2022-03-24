@@ -15,6 +15,13 @@ class BookController extends Controller
         ]);
     }
 
+    public function listBooks()
+    {
+        return view('books.list', [
+            'books' => Book::all()
+        ]);
+    }
+
 
     /**
      * Show form to create new book

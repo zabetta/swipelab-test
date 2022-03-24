@@ -15,17 +15,29 @@
 </div>
 @endif
 
-<div class="row" style="margin-bottom: 20px;">
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th width="280px">Actions</th>
+    </tr>
     @foreach ($books as $book)
-    <div class="col-md-3 margin-tb">
-        <div style="margin-bottom:2em;">
-            <img src="{{$book->image_url}}" alt="book image" style="width:100%;border-radius: 25px;">
-            <p style="height:1.5em; width:auto"><strong>{{$book->title}}</strong></p>
-            <p style="height:1.5em; width:auto"><strong>{{$book->price}}&euro;</strong></p>
-            <br />
-            <a class="btn btn-info" href="{{ route('books.show',$book->id) }}">read more</a>
-        </div>
-    </div>
+    <tr>
+        <td>{{ $book->id }}</td>
+        <td>{{ $book->title }}</td>
+        <td>
+            <form action="{{ route('books.destroy',$book->id) }}" method="POST">
+
+                <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
+
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
     @endforeach
-</div>
+</table>
+
 @endsection

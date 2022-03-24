@@ -11,7 +11,7 @@
 
 <div class="row" style="margin-bottom: 20px;">
     <div class="col-md-4 margin-tb">
-        <img src="{{$book->image_url}}" alt="book image" style="width:100%;border-radius: 25px;">
+        <img src="{{asset('assets/imgs/fake-book-inside.jpg')}}" alt="book image" style="width:100%;border-radius: 25px;">
     </div>
     <div class="col-md-8 margin-tb">
         <div style="margin-bottom:2em;">
@@ -26,5 +26,5 @@
         </div>
     </div>
 </div>
-<a class="btn btn-primary" href="/books">Back to books list</a>
+<a class="btn btn-primary" href="{{route('books.showlist')}}">Back to books list</a>
 @endsection

@@ -18,11 +18,13 @@ use App\Http\Controllers\BookController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::resource('books', BookController::class);
-
 Route::resource('users', UserController::class);
+
+Route::get('list-books', [BookController::class,'listBooks'])->name('books.showlist');
+
 Route::get('users/{userId}/end-load/{bookId}', [UserController::class, 'end_loan'])->name('users.end_load');
 Route::post('users/get-load', [UserController::class, 'new_loan'])->name('users.new_load');
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <h1><a href="{{route('home') }}">SwipeLab Library</a></h1>
     <div class="container">
         @yield('content')
     </div>

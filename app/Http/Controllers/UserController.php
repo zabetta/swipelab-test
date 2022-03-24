@@ -62,6 +62,9 @@ class UserController extends Controller
         if (!$user) {
             abort(500, 'Some Error');
         }
+
+        return redirect()->route('users.index')
+            ->with('success', 'User created successfully');
     }
 
     /**
